@@ -27,23 +27,30 @@ public class CreateContainer implements HttpRequest{
      * {"<port>/<tcp|udp|sctp>": {}}
      * 例如:  22/tcp: {}
      */
-    private HashMap<String, HashMap<String, String>> ExposedPorts;
+    private HashMap<String, Object> ExposedPorts;
 
     /**
      * 挂载路径
      */
     private HashMap<String, HashMap<String, String>> Volumes;
 
+    /**
+     * 主机配置
+     */
+    public HostConfig HostConfig;
+
     public CreateContainer(String Image,
                            LinkedList<String> Env,
                            LinkedList<String> Cmd,
-                           HashMap<String, HashMap<String, String>> ExposedPorts,
-                           HashMap<String, HashMap<String, String>> Volumes) {
+                           HashMap<String, Object> ExposedPorts,
+                           HashMap<String, HashMap<String, String>> Volumes,
+                           HostConfig hostConfig) {
         this.Image = Image;
         this.Env = Env;
         this.Cmd = Cmd;
         this.ExposedPorts = ExposedPorts;
         this.Volumes = Volumes;
+        this.HostConfig = hostConfig;
     }
 
     public CreateContainer() {

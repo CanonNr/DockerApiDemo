@@ -23,6 +23,11 @@ public class HttpClient {
         return entity.getBody();
     }
 
+    public String get(String url){
+        ResponseEntity<String> entity = restTemplate.getForEntity(url, String.class);
+        return entity.getBody();
+    }
+
     public void delete(String url){
         restTemplate.delete(url);
     }
